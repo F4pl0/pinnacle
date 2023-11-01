@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from "./auth/services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'pinnacle-frontend';
+
+  constructor(
+    private authService: AuthService
+  ) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    await this.authService.init();
+  }
+
+  login() {
+    this.authService.login();
+  }
 }

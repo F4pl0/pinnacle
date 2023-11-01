@@ -1,0 +1,60 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #d5d5d5;
+  background-image: url('/assets/image/financial-wallpaper.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .wrapper-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 15rem;
+    backdrop-filter: grayscale(1);
+    background-color: rgba(255, 255, 255, 0.62);
+
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      .logo {
+        width: calc(12rem + 30vw);
+      }
+
+      .subtitle {
+        font-size: calc(.7rem + 1vw);
+        font-weight: bold;
+        color: #262626;
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      button {
+        border-radius: 100px;
+        font-size: 1rem;
+        padding: 1.2rem 2rem;
+        border: 3px solid #000000;
+      }
+
+      .get-started-btn {
+        color: white;
+        background-color: #000000;
+      }
+    }
+  }
+}

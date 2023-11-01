@@ -1,3 +1,9 @@
+# PINNACLE - Portfolio Analysis Platform
+
+![GitHub license](https://img.shields.io/github/license/f4pl0/pinnacle?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/f4pl0/pinnacle?style=flat-square)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/f4pl0/pinnacle?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/f4pl0/pinnacle?style=flat-square)
 ![Pinnacle Logo](.github/assets/pinnacle-logo-cover.png)
 Powerful, open-source portfolio analysis platform designed to help users manage and analyze their financial portfolios effectively. This monorepo project consists of a collection of Spring microservices for backend functionality and an Angular frontend for an intuitive user interface. Pinnacle integrates various technologies, including Kafka, Microsoft SQL Server, and Redis, to provide a comprehensive portfolio management and analysis solution.
 

@@ -1,14 +1,14 @@
 # Contributing Guidelines
 
-Thank you for considering contributing to the IEX Cloud API Wrapper Library for Java! We welcome your contributions to make this library even better. Please take a moment to read these guidelines to understand how you can contribute.
+Thank you for considering contributing to the Pinnacle! We welcome your contributions to make this library even better. Please take a moment to read these guidelines to understand how you can contribute.
 
 ## Reporting Issues
 
 If you encounter a bug, have a feature request, or any other issue related to this library, please check the following steps before creating an issue:
 
-1. Search the [GitHub issues](https://github.com/F4pl0/iex-cloud-java/issues) to see if the issue has already been reported.
+1. Search the [GitHub issues](https://github.com/F4pl0/pinnacle/issues) to see if the issue has already been reported.
 
-2. Ensure your issue is relevant to this project and not a general IEX Cloud API issue.
+2. Ensure your issue is relevant to this project and not a general dependency issue.
 
 3. If you find an existing issue, feel free to comment on it to provide more information or express your interest in it.
 
@@ -39,7 +39,7 @@ We welcome pull requests that improve the library, fix bugs, or add new features
 
 8. Push your changes to your fork on GitHub.
 
-9. Create a pull request from your branch to the main repository's `main` branch.
+9. Create a pull request from your branch to the main repository's `develop` branch.
 
 10. In your pull request description, provide a clear and detailed explanation of your changes. Mention if your PR is fixing a specific issue, and reference that issue.
 
@@ -51,7 +51,7 @@ We welcome pull requests that improve the library, fix bugs, or add new features
 
 - Use meaningful variable and method names.
 
-- Write comments for complex or non-obvious parts of your code.
+- Write comments for complex or non-obvious parts of your code. (Ideally, your code should be self-documenting.)
 
 ## Testing
 
@@ -63,4 +63,4 @@ We welcome pull requests that improve the library, fix bugs, or add new features
 
 By contributing to this project, you agree that your contributions will be licensed under the project's [MIT License](LICENSE). If you include any third-party code or libraries, please make sure they are compatible with the project's license.
 
-Thank you for your contribution to the IEX Cloud API Wrapper Library for Java! Your efforts help improve the library for everyone.
+Thank you for your contribution to the pinnacle! Your efforts help improve the project for everyone.

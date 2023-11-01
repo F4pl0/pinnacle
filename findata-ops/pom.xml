@@ -4,7 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.f4pl0.pinnacle</groupId>
+    <parent>
+        <groupId>com.f4pl0.pinnacle</groupId>
+        <artifactId>pinnacle</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>findata-ops</artifactId>
     <version>1.0-SNAPSHOT</version>
 

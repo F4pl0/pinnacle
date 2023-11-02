@@ -17,14 +17,16 @@ export class AuthService {
     this.oauthService.setStorage(localStorage);
     this.oauthService.setupAutomaticSilentRefresh();
     await this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    await this.oauthService.tryLogin({
+      onTokenReceived: context => {
+        console.log('logged in', context);
+      }
+    });
   }
 
   login(): void {
-    this.oauthService.initCodeFlow();
-    // this.oauthService.tryLogin({
-    //   onTokenReceived: context => {
-    //     console.log("onTokenReceived: ", context);
-    //   }
-    // })
+    if (!this.oauthService.hasValidAccessToken()) {
+      this.oauthService.initLoginFlow();
+    }
   }
 }

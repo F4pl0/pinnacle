@@ -16,6 +16,7 @@ export class AppComponent {
 
   async ngOnInit(): Promise<void> {
     await this.authService.init();
+
   }
 
   login() {

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
@@ -10,12 +11,15 @@
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
         <option value="$PROJECT_DIR$/portfolio-service/pom.xml" />
         <option value="$PROJECT_DIR$/findata-ops/pom.xml" />
+        <option value="$PROJECT_DIR$/data-aggregator/pom.xml" />
+        <option value="$PROJECT_DIR$/data-aggregator-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/data-aggregation-service/pom.xml" />
+        <option value="$PROJECT_DIR$/data-aggregator/pom.xml" />
         <option value="$PROJECT_DIR$/iex-cloud/pom.xml" />
       </set>
     </option>

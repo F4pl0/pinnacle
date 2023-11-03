@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/auth-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/data-aggregation-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data-aggregator-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data-aggregator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/findata-ops/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/findata-ops/src/main/resources" charset="UTF-8" />

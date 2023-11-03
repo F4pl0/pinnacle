@@ -22,6 +22,7 @@
     <module>findata-ops</module>
     <module>portfolio-service</module>
     <module>user-service</module>
+    <module>data-aggregator-service</module>
   </modules>
 
   <properties>

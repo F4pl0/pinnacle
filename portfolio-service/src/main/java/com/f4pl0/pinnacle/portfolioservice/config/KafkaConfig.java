@@ -10,7 +10,7 @@ public class KafkaConfig {
 
     @Bean
     public NewTopic updateCompanyDataRequestTaskTopic() {
-        return TopicBuilder.name("update-company-data-request-task-topic")
+        return TopicBuilder.name("asset-update-request-topic")
                 .partitions(1)
                 .replicas(1)
                 .build();

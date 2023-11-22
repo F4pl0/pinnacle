@@ -3,6 +3,7 @@ package com.f4pl0.pinnacle.userservice.controller;
 import com.f4pl0.pinnacle.userservice.dto.UserRegisterDTO;
 import com.f4pl0.pinnacle.userservice.exception.UserRegistrationException;
 import com.f4pl0.pinnacle.userservice.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class UserController {
 
     @PostMapping("/api/user/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void register(@RequestBody UserRegisterDTO userRegisterDTO) throws UserRegistrationException {
+    public void register(@Valid @RequestBody UserRegisterDTO userRegisterDTO) throws UserRegistrationException {
         userService.register(userRegisterDTO);
     }
 }

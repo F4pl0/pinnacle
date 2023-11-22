@@ -27,47 +27,91 @@ Pinnacle offers a range of features to empower users in their financial analysis
 
 - **Portfolio Optimization Recommendations**: Receive personalized recommendations for optimizing your portfolio based on your financial goals and risk tolerance.
 
-## Architecture
+## Requirements
 
-Pinnacle follows a microservices architecture to provide modularity and scalability. The key components of the system are:
+- **A beefy PC** (if you wish to run this locally, this devours RAM worse than chrome) Good luck with this one
 
-- **Authentication Server**: Handles user authentication and authorization, ensuring the security of your financial data.
+- **Java 21** or higher (JDK) [OpenJDK](https://openjdk.org/install/)
 
-- **API Gateway**: Acts as the entry point for external requests, routing them to the appropriate microservices.
+- **Maven** [Maven Download](https://maven.apache.org/download.cgi)
 
-- **Findata Operations (findata-ops)**: A library for performing financial analysis operations, serving as the core of the platform's analytical capabilities.
+- **Docker** (Docker Compose, to run the dependencies such as database, kafka, redis, etc.)
 
-- **Services for Relevant Tasks**: A set of microservices responsible for specific tasks, such as portfolio management, data aggregation, and processing.
+- **Node.js 18 with NPM** or later (For Angular frontend) [Node.js](https://nodejs.org/en/)
 
-## Technologies Used
+- **Angular CLI** (For Angular frontend) [Angular CLI](https://angular.io/cli)
 
-Pinnacle leverages several cutting-edge technologies to provide a robust and efficient portfolio analysis platform:
-
-- **Spring Microservices**: Utilizing the Spring framework for building microservices to ensure high performance and maintainability.
-
-- **Angular Frontend**: The Angular framework powers the user-friendly interface, providing a seamless experience for users.
-
-- **Kafka**: Kafka facilitates real-time data streaming and processing, enabling timely updates and analysis.
-
-- **Microsoft SQL Server**: A reliable and scalable database solution for storing and managing financial data.
-
-- **Redis**: Redis is used for caching and data retrieval optimization, enhancing the platform's performance.
 
 ## Getting Started
 
 To get started with Pinnacle, follow these steps:
 
 1. Clone this repository to your local machine.
+    ```bash
+    git clone https://github.com/F4pl0/pinnacle.git
+    ```
 
-2. Set up the required dependencies, including Java, Spring, Angular, and other dependencies mentioned in docker compose.
+2. Make sure you have all the required dependencies installed, see [Requirements](#requirements).
 
-3. Configure the environment variables and settings according to your needs.
+3. Install the frontend dependencies.
+    ```bash
+    cd pinnacle-frontend
+    npm install
+    cd ..
+    ```
 
-4. Build and deploy the microservices and the Angular frontend.
+4. Sync Maven dependencies.
+    ```bash
+    mvn clean install
+    ```
 
-5. Access the platform via the API Gateway.
+5. Run the Docker Compose file to start the dependencies.
+    ```bash
+    docker-compose up -d
+    ```
 
-For detailed instructions and setup guides, please refer to the individual README files within each component of the monorepo.
+### Run on Windows
+```bash
+./run.bat
+```
+
+### Run on Linux & Mac
+```bash
+./run.sh
+```
+
+### Enjoy
+Navigate to [http://localhost:4200](http://localhost:4200) to access the Pinnacle frontend.
+
+## Troubleshooting & FAQ
+
+Here are some common issues you might encounter while setting up or running Pinnacle, along with their solutions:
+
+1. **Issue: Maven dependencies are not being resolved.**
+    - Solution: Make sure you have the correct version of Maven installed and your `settings.xml` file is correctly 
+   configured. If the problem persists, try deleting your `.m2` directory and re-running `mvn clean install`.
+
+2. **Issue: Docker Compose services are not starting up.**
+    - Solution: Check the Docker Compose logs for any error messages. Make sure you have the correct version of Docker 
+   and Docker Compose installed. Also, ensure that the required ports are not being used by other services.
+
+3. **Issue: Frontend is not loading at `http://localhost:4200`.**
+    - Solution: Make sure you have run `npm install` in the `pinnacle-frontend` directory and that the Angular server 
+   is running. If the problem persists, try clearing your browser cache or opening the application in an incognito 
+   window.
+
+4. **Issue: I am getting a `java.lang.OutOfMemoryError`.**
+    - Solution: This project requires a significant amount of RAM. If you are running out of memory, try increasing the 
+   heap size allocated to the JVM or closing other memory-intensive applications.
+    - Try increasing your swap space. [How to increase swap space](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/)
+    - Run it on a more powerful machine.
+
+5. **Issue: I am getting a `401 Unauthorized` error when trying to access the API.**
+    - Solution: Make sure you are passing the correct authentication credentials with your request. If you are using 
+   OAuth2, ensure that your access token has not expired, they tend to expire quickly if not refreshed.
+
+Remember, if you encounter an issue that is not listed here, you can always 
+[create an issue](https://github.com/f4pl0/pinnacle/issues) on our GitHub repository.
 
 ## Contributing
 

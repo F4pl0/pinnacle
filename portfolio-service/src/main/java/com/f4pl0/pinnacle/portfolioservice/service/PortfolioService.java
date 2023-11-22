@@ -11,8 +11,6 @@ import lombok.SneakyThrows;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 @Service
 @RequiredArgsConstructor
 public class PortfolioService {
@@ -23,15 +21,11 @@ public class PortfolioService {
     @SneakyThrows
     public void addStockAsset(String userEmail, AddStockAssetDto addStockAssetDto) {
         // Check if the stock asset is valid
-        AtomicBoolean isValid = new AtomicBoolean(false);
-        iexCloudClient.reference.dailyIEXTradingSymbols().forEach(symbol -> {
-            if (symbol.symbol.equals(addStockAssetDto.getSymbol())) {
-                isValid.set(true);
-                return;
-            }
-        });
+        boolean isValid = iexCloudClient.reference.dailyIEXTradingSymbols()
+                        .stream()
+                        .anyMatch(symbol -> symbol.symbol.equals(addStockAssetDto.getSymbol()));
 
-        if (!isValid.get()) {
+        if (!isValid) {
             throw new StockAssetException("Invalid stock asset");
         }
 

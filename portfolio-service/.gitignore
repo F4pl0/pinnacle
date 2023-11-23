@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Config ###
+/config/*
+!/config/README.md
+!/config/*.example

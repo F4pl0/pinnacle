@@ -33,6 +33,5 @@ build/
 .vscode/
 
 ### Config ###
-/config/*
-!/config/README.md
-!/config/*.example
+/src/main/resources/application-main.properties
+!/src/main/resources/*.example

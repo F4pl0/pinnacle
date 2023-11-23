@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.ApplicationContext;
@@ -30,6 +29,8 @@ class UserServiceApplicationTest {
     private EntityManager entityManager;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ApplicationContext context;
 
     @Test
     void injectedComponentsAreNotNull() {
@@ -41,7 +42,6 @@ class UserServiceApplicationTest {
 
     @Test
     public void contextLoads() {
-        ApplicationContext context = SpringApplication.run(UserServiceApplication.class);
         assertNotNull(context);
     }
 }

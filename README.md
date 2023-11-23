@@ -1,6 +1,7 @@
 # PINNACLE - Portfolio Analysis Platform
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/f4pl0/pinnacle/mavenTest.yml?style=flat-square)
+[![codecov](https://codecov.io/gh/F4pl0/pinnacle/graph/badge.svg?token=DXR3RFF0YY)](https://codecov.io/gh/F4pl0/pinnacle)
 ![GitHub license](https://img.shields.io/github/license/f4pl0/pinnacle?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/f4pl0/pinnacle?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/f4pl0/pinnacle?style=flat-square)

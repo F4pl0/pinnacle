@@ -1,4 +1,4 @@
-package com.f4pl0.pinnacle.userservice;
+package com.f4pl0.pinnacle.userservice.service;
 
 import com.f4pl0.pinnacle.userservice.dto.UserRegisterDTO;
 import com.f4pl0.pinnacle.userservice.exception.UserRegistrationException;

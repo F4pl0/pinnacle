@@ -1,4 +1,4 @@
-package com.f4pl0.pinnacle.userservice;
+package com.f4pl0.pinnacle.userservice.service;
 
 import com.f4pl0.pinnacle.userservice.dto.UserRegisterDTO;
 import com.f4pl0.pinnacle.userservice.exception.UserRegistrationException;
@@ -6,7 +6,6 @@ import com.f4pl0.pinnacle.userservice.model.Authority;
 import com.f4pl0.pinnacle.userservice.model.User;
 import com.f4pl0.pinnacle.userservice.repository.AuthorityRepository;
 import com.f4pl0.pinnacle.userservice.repository.UserRepository;
-import com.f4pl0.pinnacle.userservice.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -39,9 +39,14 @@ public class PortfolioService {
             return Optional.empty();
         }
 
+        if (userEmail == null || !userEmail.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            return Optional.empty();
+        }
+
         if (!isValidStockAsset(addStockAssetDto.getSymbol())) {
             return Optional.empty();
         }
+
 
         StockAsset stockAsset = createStockAsset(userEmail, addStockAssetDto);
         stockAssetRepository.save(stockAsset);

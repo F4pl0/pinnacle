@@ -17,6 +17,10 @@ public class PinnacleUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
+        if (username == null || username.isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
+        }
+
         User user = userRepository.findByUsername(username);
 
         if (user == null) {

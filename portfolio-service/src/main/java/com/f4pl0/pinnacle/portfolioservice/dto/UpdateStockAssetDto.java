@@ -1,5 +1,6 @@
 package com.f4pl0.pinnacle.portfolioservice.dto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,9 +14,9 @@ public class UpdateStockAssetDto {
     private long quantity;
 
     @NotNull(message = "Price must be provided")
-    @Min(value = 0, message = "Price must be at least 0")
+    @DecimalMin(value = "0.001", message = "Price must be at least 0.001")
     private BigDecimal price;
 
-    // No validation for purchaseTimestamp as it's optional
+    @PastOrPresentTimestamp(message = "Purchase timestamp must be in the past or present")
     private long purchaseTimestamp;
 }

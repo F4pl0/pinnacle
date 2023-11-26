@@ -6,6 +6,7 @@ import com.f4pl0.pinnacle.portfolioservice.event.AssetUpdateRequestEvent;
 import com.f4pl0.pinnacle.portfolioservice.model.StockAsset;
 import com.f4pl0.pinnacle.portfolioservice.repository.StockAssetRepository;
 import io.github.f4pl0.IEXCloudClient;
+import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class PortfolioService {
     private final StockAssetRepository stockAssetRepository;
     private final IEXCloudClient iexCloudClient;
     private final KafkaTemplate<String, AssetUpdateRequestEvent> assetUpdateRequestTemplate;
+    private final Validator validator;
 
     /**
      * Adds a new stock asset to the portfolio.
@@ -33,6 +35,10 @@ public class PortfolioService {
      * @throws IOException If an error occurs while validating the stock asset.
      */
     public Optional<StockAsset> addStockAsset(String userEmail, AddStockAssetDto addStockAssetDto) throws IOException {
+        if (!validator.validate(addStockAssetDto).isEmpty()) {
+            return Optional.empty();
+        }
+
         if (!isValidStockAsset(addStockAssetDto.getSymbol())) {
             return Optional.empty();
         }
@@ -55,6 +61,10 @@ public class PortfolioService {
      */
     public Optional<StockAsset> updateStockAsset(String userEmail, UUID assetId, UpdateStockAssetDto updateStockAssetDto) {
         Optional<StockAsset> optionalStockAsset = stockAssetRepository.findByUserEmailAndId(userEmail, assetId);
+
+        if (!validator.validate(updateStockAssetDto).isEmpty()) {
+            return Optional.empty();
+        }
 
         if (optionalStockAsset.isEmpty()) {
             return Optional.empty();
@@ -97,7 +107,7 @@ public class PortfolioService {
      * @throws IOException If an error occurs while validating the stock asset.
      */
     private boolean isValidStockAsset(String symbol) throws IOException {
-        return iexCloudClient.reference.dailyIEXTradingSymbols()
+        return iexCloudClient.fetchReferenceData().dailyIEXTradingSymbols()
                 .stream()
                 .anyMatch(iexSymbol -> iexSymbol.symbol.equals(symbol));
     }

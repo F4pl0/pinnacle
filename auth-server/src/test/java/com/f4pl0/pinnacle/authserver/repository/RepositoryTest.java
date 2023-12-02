@@ -27,14 +27,19 @@ class RepositoryTest {
         user.setUsername("test@email.com");
         user.setEmail("test@email.com");
         user.setPassword("testPassword");
+        user.setFirstName("testFirstName");
+        user.setLastName("testLastName");
 
         userRepository.save(user);
 
-        Optional<User> foundUser = Optional.ofNullable(userRepository.findByUsername("test@email.com"));
+        Optional<User> foundUser = Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
 
         assertThat(foundUser).isPresent();
-        assertThat(foundUser.get().getUsername()).isEqualTo("test@email.com");
-        assertThat(foundUser.get().getPassword()).isEqualTo("testPassword");
+        assertThat(foundUser.get().getUsername()).isEqualTo(user.getUsername());
+        assertThat(foundUser.get().getEmail()).isEqualTo(user.getEmail());
+        assertThat(foundUser.get().getPassword()).isEqualTo(user.getPassword());
+        assertThat(foundUser.get().getFirstName()).isEqualTo(user.getFirstName());
+        assertThat(foundUser.get().getLastName()).isEqualTo(user.getLastName());
         assertDoesNotThrow(() -> UUID.fromString(foundUser.get().getId().toString()));
     }
 

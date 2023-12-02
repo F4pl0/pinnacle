@@ -5,8 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PinnacleUserPrincipalTest {
 
@@ -27,6 +26,10 @@ public class PinnacleUserPrincipalTest {
             assertEquals(1, pinnacleUserPrincipal.getAuthorities().size());
             assertEquals(new SimpleGrantedAuthority("ROLE_USER"), pinnacleUserPrincipal.getAuthorities().iterator().next());
             assertNotNull(pinnacleUserPrincipal.toString());
+            assertTrue(pinnacleUserPrincipal.isAccountNonExpired());
+            assertTrue(pinnacleUserPrincipal.isAccountNonLocked());
+            assertTrue(pinnacleUserPrincipal.isCredentialsNonExpired());
+            assertTrue(pinnacleUserPrincipal.isEnabled());
         }
 
 }

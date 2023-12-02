@@ -1,7 +1,6 @@
 package com.f4pl0.pinnacle.authserver.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Singular;
@@ -12,7 +11,6 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
 @NoArgsConstructor
 public class User {
 

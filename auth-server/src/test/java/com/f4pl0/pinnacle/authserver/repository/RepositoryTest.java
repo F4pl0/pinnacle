@@ -1,19 +1,19 @@
-package com.f4pl0.pinnacle.authserver;
+package com.f4pl0.pinnacle.authserver.repository;
 
 import com.f4pl0.pinnacle.authserver.model.Authority;
 import com.f4pl0.pinnacle.authserver.model.User;
-import com.f4pl0.pinnacle.authserver.repository.AuthorityRepository;
-import com.f4pl0.pinnacle.authserver.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DataJpaTest
-class RepositoryTests {
+class RepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
@@ -35,6 +35,7 @@ class RepositoryTests {
         assertThat(foundUser).isPresent();
         assertThat(foundUser.get().getUsername()).isEqualTo("test@email.com");
         assertThat(foundUser.get().getPassword()).isEqualTo("testPassword");
+        assertDoesNotThrow(() -> UUID.fromString(foundUser.get().getId().toString()));
     }
 
     @Test
@@ -48,5 +49,8 @@ class RepositoryTests {
 
         assertThat(foundAuthority).isPresent();
         assertThat(foundAuthority.get().getAuthority()).isEqualTo("ROLE_USER");
+        assertDoesNotThrow(() -> UUID.fromString(foundAuthority.get().getId().toString()));
     }
+
+
 }

@@ -1,7 +1,8 @@
 package com.f4pl0.pinnacle.portfolioservice.service;
 
-import com.f4pl0.pinnacle.portfolioservice.dto.AddStockAssetDto;
-import com.f4pl0.pinnacle.portfolioservice.dto.UpdateStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.StockAssetResponseDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.UpdateStockAssetDto;
 import com.f4pl0.pinnacle.portfolioservice.event.AssetUpdateRequestEvent;
 import com.f4pl0.pinnacle.portfolioservice.model.StockAsset;
 import com.f4pl0.pinnacle.portfolioservice.repository.StockAssetRepository;
@@ -12,8 +13,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * Service class for managing portfolio operations.
@@ -27,14 +30,40 @@ public class PortfolioService {
     private final Validator validator;
 
     /**
+     * Gets all stock assets of the user.
+     *
+     * @param userEmail The email of the user.
+     * @return A list of StockAssetResponseDto objects.
+     */
+    public List<StockAssetResponseDto> getAllStockAssets(String userEmail) {
+        return stockAssetRepository.findByUserEmail(userEmail)
+                .stream()
+                .map(StockAssetResponseDto::fromStockAsset)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Gets a stock asset of the user.
+     *
+     * @param userEmail The email of the user.
+     * @param assetId The ID of the asset to get.
+     * @return A list of StockAssetResponseDto objects.
+     */
+    public Optional<StockAssetResponseDto> getStockAsset(String userEmail, UUID assetId) {
+        return stockAssetRepository.findByUserEmailAndId(userEmail, assetId)
+                .map(StockAssetResponseDto::fromStockAsset);
+    }
+
+
+    /**
      * Adds a new stock asset to the portfolio.
      *
      * @param userEmail The email of the user.
      * @param addStockAssetDto The DTO containing the stock asset details.
-     * @return An Optional containing the added StockAsset, or empty if the stock asset is invalid.
+     * @return An Optional containing the created StockAssetResponseDto, or empty if the stock asset is invalid.
      * @throws IOException If an error occurs while validating the stock asset.
      */
-    public Optional<StockAsset> addStockAsset(String userEmail, AddStockAssetDto addStockAssetDto) throws IOException {
+    public Optional<StockAssetResponseDto> addStockAsset(String userEmail, AddStockAssetDto addStockAssetDto) throws IOException {
         if (!validator.validate(addStockAssetDto).isEmpty()) {
             return Optional.empty();
         }
@@ -53,7 +82,7 @@ public class PortfolioService {
 
         sendAssetUpdateRequest(addStockAssetDto.getSymbol());
 
-        return Optional.of(stockAsset);
+        return Optional.of(StockAssetResponseDto.fromStockAsset(stockAsset));
     }
 
     /**
@@ -62,9 +91,9 @@ public class PortfolioService {
      * @param userEmail The email of the user.
      * @param assetId The ID of the asset to update.
      * @param updateStockAssetDto The DTO containing the updated stock asset details.
-     * @return An Optional containing the updated StockAsset, or empty if the stock asset is not found.
+     * @return An Optional containing the updated StockAssetResponseDto, or empty if the stock asset is invalid.
      */
-    public Optional<StockAsset> updateStockAsset(String userEmail, UUID assetId, UpdateStockAssetDto updateStockAssetDto) {
+    public Optional<StockAssetResponseDto> updateStockAsset(String userEmail, UUID assetId, UpdateStockAssetDto updateStockAssetDto) {
         Optional<StockAsset> optionalStockAsset = stockAssetRepository.findByUserEmailAndId(userEmail, assetId);
 
         if (!validator.validate(updateStockAssetDto).isEmpty()) {
@@ -82,7 +111,7 @@ public class PortfolioService {
 
         stockAssetRepository.save(stockAsset);
 
-        return Optional.of(stockAsset);
+        return Optional.of(StockAssetResponseDto.fromStockAsset(stockAsset));
     }
 
     /**

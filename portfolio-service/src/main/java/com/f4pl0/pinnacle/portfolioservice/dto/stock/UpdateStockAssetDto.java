@@ -1,18 +1,15 @@
-package com.f4pl0.pinnacle.portfolioservice.dto;
+package com.f4pl0.pinnacle.portfolioservice.dto.stock;
 
+import com.f4pl0.pinnacle.portfolioservice.dto.PastOrPresentTimestamp;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
-public class AddStockAssetDto {
-    @Pattern(regexp = "^[A-Z]{1,5}$", message = "Symbol must be 1 to 5 uppercase letters")
-    private String symbol;
-
+public class UpdateStockAssetDto {
     @NotNull(message = "Quantity must be provided")
     @Min(value = 1, message = "Quantity must be at least 1")
     private long quantity;

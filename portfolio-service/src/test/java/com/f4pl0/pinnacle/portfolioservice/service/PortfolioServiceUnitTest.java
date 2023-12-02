@@ -1,7 +1,8 @@
 package com.f4pl0.pinnacle.portfolioservice.service;
 
-import com.f4pl0.pinnacle.portfolioservice.dto.AddStockAssetDto;
-import com.f4pl0.pinnacle.portfolioservice.dto.UpdateStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.StockAssetResponseDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.UpdateStockAssetDto;
 import com.f4pl0.pinnacle.portfolioservice.event.AssetUpdateRequestEvent;
 import com.f4pl0.pinnacle.portfolioservice.model.StockAsset;
 import com.f4pl0.pinnacle.portfolioservice.repository.StockAssetRepository;
@@ -78,7 +79,7 @@ public class PortfolioServiceUnitTest {
                     add(iexTradingSymbol);
                 }});
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertTrue(result.isPresent());
         verify(stockAssetRepository, times(1)).save(any(StockAsset.class));
@@ -97,7 +98,7 @@ public class PortfolioServiceUnitTest {
         when(iexCloudClient.fetchReferenceData()).thenReturn(mock(Reference.class));
         when(iexCloudClient.fetchReferenceData().dailyIEXTradingSymbols()).thenReturn(new ArrayList<>());
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -122,7 +123,7 @@ public class PortfolioServiceUnitTest {
                     add(iexTradingSymbol);
                 }});
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -147,7 +148,7 @@ public class PortfolioServiceUnitTest {
                     add(iexTradingSymbol);
                 }});
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -172,7 +173,7 @@ public class PortfolioServiceUnitTest {
                     add(iexTradingSymbol);
                 }});
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -197,7 +198,7 @@ public class PortfolioServiceUnitTest {
                     add(iexTradingSymbol);
                 }});
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -220,7 +221,8 @@ public class PortfolioServiceUnitTest {
 
         when(stockAssetRepository.findByUserEmailAndId(userEmail, assetId)).thenReturn(Optional.of(stockAsset));
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertTrue(result.isPresent());
         assertEquals(updateStockAssetDto.getQuantity(), result.get().getQuantity());
@@ -240,7 +242,8 @@ public class PortfolioServiceUnitTest {
 
         when(stockAssetRepository.findByUserEmailAndId(userEmail, assetId)).thenReturn(Optional.empty());
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -263,7 +266,8 @@ public class PortfolioServiceUnitTest {
 
         when(stockAssetRepository.findByUserEmailAndId(userEmail, assetId)).thenReturn(Optional.of(stockAsset));
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -286,7 +290,8 @@ public class PortfolioServiceUnitTest {
 
         when(stockAssetRepository.findByUserEmailAndId(userEmail, assetId)).thenReturn(Optional.of(stockAsset));
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -309,7 +314,8 @@ public class PortfolioServiceUnitTest {
 
         when(stockAssetRepository.findByUserEmailAndId(userEmail, assetId)).thenReturn(Optional.of(stockAsset));
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }

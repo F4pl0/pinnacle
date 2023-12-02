@@ -1,9 +1,9 @@
 package com.f4pl0.pinnacle.portfolioservice.controller;
 
-import com.f4pl0.pinnacle.portfolioservice.dto.AddStockAssetDto;
-import com.f4pl0.pinnacle.portfolioservice.dto.UpdateStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.StockAssetResponseDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.UpdateStockAssetDto;
 import com.f4pl0.pinnacle.portfolioservice.exception.StockAssetException;
-import com.f4pl0.pinnacle.portfolioservice.model.StockAsset;
 import com.f4pl0.pinnacle.portfolioservice.service.PortfolioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -27,6 +28,42 @@ public class PortfolioController {
     private final PortfolioService portfolioService;
 
     /**
+     * This method handles the HTTP GET request to get all user's stock assets.
+     *
+     * @param authentication The authentication object containing the user's details.
+     * @return A ResponseEntity containing the portfolio of the user.
+     */
+    @GetMapping("/asset/stock")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<StockAssetResponseDto>> getAllStockAssets(Authentication authentication) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(portfolioService.getAllStockAssets(authentication.getName()));
+    }
+
+    /**
+     * This method handles the HTTP GET request to get a stock asset of the user.
+     *
+     * @param authentication The authentication object containing the user's details.
+     * @param assetId The ID of the stock asset to get.
+     * @return A ResponseEntity containing the stock asset of the user.
+     */
+    @GetMapping("/asset/stock/{assetId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<StockAssetResponseDto>> getStockAsset(
+            Authentication authentication,
+            @PathVariable("assetId") UUID assetId
+    ) {
+        Optional<StockAssetResponseDto> optionalStockAsset =
+                portfolioService.getStockAsset(authentication.getName(), assetId);
+
+        return optionalStockAsset.map(stockAssetResponseDto -> ResponseEntity
+                .status(HttpStatus.OK)
+                .body(List.of(stockAssetResponseDto))).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
+    /**
      * This method handles the HTTP POST request to add a new stock asset to the portfolio.
      *
      * @param authentication The authentication object containing the user's details.
@@ -37,17 +74,20 @@ public class PortfolioController {
      */
     @PostMapping("/asset/stock")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> addPortfolioAsset(
+    public ResponseEntity<StockAssetResponseDto> addPortfolioAsset(
             Authentication authentication,
             @Valid @RequestBody AddStockAssetDto body
     ) throws IOException, StockAssetException {
-        Optional<StockAsset> optionalStockAsset = portfolioService.addStockAsset(authentication.getName(), body);
+        Optional<StockAssetResponseDto> optionalStockAsset =
+                portfolioService.addStockAsset(authentication.getName(), body);
 
         if (optionalStockAsset.isEmpty()) {
             throw new StockAssetException("Invalid stock asset: " + body.getSymbol());
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(optionalStockAsset.get());
     }
 
     /**
@@ -61,18 +101,21 @@ public class PortfolioController {
      */
     @PutMapping("/asset/stock/{assetId}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> updatePortfolioAsset(
+    public ResponseEntity<StockAssetResponseDto> updatePortfolioAsset(
             Authentication authentication,
             @PathVariable("assetId") UUID assetId,
             @Valid @RequestBody UpdateStockAssetDto body
     ) throws StockAssetException {
-        Optional<StockAsset> optionalStockAsset = portfolioService.updateStockAsset(authentication.getName(), assetId, body);
+        Optional<StockAssetResponseDto> optionalStockAsset =
+                portfolioService.updateStockAsset(authentication.getName(), assetId, body);
 
         if (optionalStockAsset.isEmpty()) {
             throw new StockAssetException("Invalid asset ID: " + assetId);
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(optionalStockAsset.get());
     }
 
     /**

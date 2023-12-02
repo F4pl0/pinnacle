@@ -1,7 +1,8 @@
 package com.f4pl0.pinnacle.portfolioservice.service;
 
-import com.f4pl0.pinnacle.portfolioservice.dto.AddStockAssetDto;
-import com.f4pl0.pinnacle.portfolioservice.dto.UpdateStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.StockAssetResponseDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.UpdateStockAssetDto;
 import com.f4pl0.pinnacle.portfolioservice.model.StockAsset;
 import com.f4pl0.pinnacle.portfolioservice.repository.StockAssetRepository;
 import io.github.f4pl0.IEXCloudClient;
@@ -69,11 +70,10 @@ public class PortfolioServiceIntegrationTest {
         addStockAssetDto.setPrice(BigDecimal.valueOf(150.0));
         addStockAssetDto.setPurchaseTimestamp(System.currentTimeMillis());
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertTrue(result.isPresent());
         assertNotNull(result.get().getId());
-        assertEquals(userEmail, result.get().getUserEmail());
         assertEquals(addStockAssetDto.getSymbol(), result.get().getSymbol());
         assertEquals(addStockAssetDto.getQuantity(), result.get().getQuantity());
         assertEquals(addStockAssetDto.getPrice(), result.get().getPrice());
@@ -89,7 +89,7 @@ public class PortfolioServiceIntegrationTest {
         addStockAssetDto.setPrice(BigDecimal.valueOf(150.0));
         addStockAssetDto.setPurchaseTimestamp(System.currentTimeMillis());
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -103,7 +103,7 @@ public class PortfolioServiceIntegrationTest {
         addStockAssetDto.setPrice(BigDecimal.valueOf(150.0));
         addStockAssetDto.setPurchaseTimestamp(System.currentTimeMillis());
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -117,7 +117,7 @@ public class PortfolioServiceIntegrationTest {
         addStockAssetDto.setPrice(BigDecimal.valueOf(150.0));
         addStockAssetDto.setPurchaseTimestamp(System.currentTimeMillis());
 
-        Optional<StockAsset> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
+        Optional<StockAssetResponseDto> result = portfolioService.addStockAsset(userEmail, addStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -139,7 +139,8 @@ public class PortfolioServiceIntegrationTest {
 
         entityManager.persist(stockAsset);
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(stockAsset.getUserEmail(), stockAsset.getId(), updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(stockAsset.getUserEmail(), stockAsset.getId(), updateStockAssetDto);
 
         assertTrue(result.isPresent());
         assertEquals(updateStockAssetDto.getQuantity(), result.get().getQuantity());
@@ -165,7 +166,8 @@ public class PortfolioServiceIntegrationTest {
 
         entityManager.persist(stockAsset);
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }
@@ -188,7 +190,8 @@ public class PortfolioServiceIntegrationTest {
 
         entityManager.persist(stockAsset);
 
-        Optional<StockAsset> result = portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
+        Optional<StockAssetResponseDto> result =
+                portfolioService.updateStockAsset(userEmail, assetId, updateStockAssetDto);
 
         assertFalse(result.isPresent());
     }

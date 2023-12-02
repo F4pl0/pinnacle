@@ -1,7 +1,7 @@
 package com.f4pl0.pinnacle.portfolioservice.controller;
 
 import com.f4pl0.pinnacle.portfolioservice.H2DatabaseTestConfig;
-import com.f4pl0.pinnacle.portfolioservice.dto.AddStockAssetDto;
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.nimbusds.jose.JOSEException;

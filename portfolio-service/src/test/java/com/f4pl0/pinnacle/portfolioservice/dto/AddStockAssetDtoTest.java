@@ -1,5 +1,6 @@
 package com.f4pl0.pinnacle.portfolioservice.dto;
 
+import com.f4pl0.pinnacle.portfolioservice.dto.stock.AddStockAssetDto;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;

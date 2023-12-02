@@ -13,7 +13,9 @@ public class AuthorityTest {
         UUID expectedId = UUID.randomUUID();
         String expectedAuthority = "ROLE_USER";
 
-        Authority authority = new Authority(expectedId, expectedAuthority);
+        Authority authority = new Authority();
+        authority.setId(expectedId);
+        authority.setAuthority(expectedAuthority);
 
         assertEquals(expectedId, authority.getId());
         assertEquals(expectedAuthority, authority.getAuthority());

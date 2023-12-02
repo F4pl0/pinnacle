@@ -12,7 +12,11 @@ public class UserRegisterDTOTest {
         String expectedEmail = "john.doe@example.com";
         String expectedPassword = "password123";
 
-        UserRegisterDTO user = new UserRegisterDTO(expectedFirstName, expectedLastName, expectedEmail, expectedPassword);
+        UserRegisterDTO user = new UserRegisterDTO();
+        user.setFirstName(expectedFirstName);
+        user.setLastName(expectedLastName);
+        user.setEmail(expectedEmail);
+        user.setPassword(expectedPassword);
 
         assertEquals(expectedFirstName, user.getFirstName());
         assertEquals(expectedLastName, user.getLastName());

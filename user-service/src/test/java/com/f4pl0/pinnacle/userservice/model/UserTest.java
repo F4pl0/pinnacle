@@ -19,7 +19,14 @@ public class UserTest {
         String expectedFirstName = "John";
         String expectedLastName = "Doe";
 
-        User user = new User(expectedId, expectedUsername, expectedEmail, expectedPassword, expectedAuthorities, expectedFirstName, expectedLastName);
+        User user = new User();
+        user.setId(expectedId);
+        user.setUsername(expectedUsername);
+        user.setEmail(expectedEmail);
+        user.setPassword(expectedPassword);
+        user.setAuthorities(expectedAuthorities);
+        user.setFirstName(expectedFirstName);
+        user.setLastName(expectedLastName);
 
         assertEquals(expectedId, user.getId());
         assertEquals(expectedUsername, user.getUsername());

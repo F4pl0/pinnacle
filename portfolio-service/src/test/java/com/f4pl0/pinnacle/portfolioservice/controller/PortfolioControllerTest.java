@@ -41,7 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 @EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:19092", "port=19092"})
-@ContextConfiguration(classes = {H2DatabaseTestConfig.class})
+@ContextConfiguration(classes = {H2DatabaseTestConfig.class, PortfolioControllerTestConfig.class})
 public class PortfolioControllerTest {
 
     private static WireMockServer wireMockServer;

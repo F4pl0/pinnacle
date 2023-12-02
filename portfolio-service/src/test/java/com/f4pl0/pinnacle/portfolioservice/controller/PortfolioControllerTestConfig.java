@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.f4pl0.IEXCloudClient;
 import io.github.f4pl0.reference.Reference;
 import io.github.f4pl0.reference.data.IEXTradingSymbol;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@Configuration
+@TestConfiguration
 @Profile("test")
 public class PortfolioControllerTestConfig {
 

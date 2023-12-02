@@ -6,7 +6,6 @@ import io.github.f4pl0.reference.Reference;
 import io.github.f4pl0.reference.data.IEXTradingSymbol;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
@@ -26,13 +25,18 @@ public class PortfolioControllerTestConfig {
         IEXCloudClient mockIEXCloudClient = mock(IEXCloudClient.class);
         when(mockIEXCloudClient.fetchReferenceData()).thenReturn(mock(Reference.class));
 
-        IEXTradingSymbol iexTradingSymbol = new IEXTradingSymbol();
-        iexTradingSymbol.symbol = "AAPL";
-        iexTradingSymbol.name = "Apple Inc.";
+        IEXTradingSymbol iexTradingSymbol1 = new IEXTradingSymbol();
+        iexTradingSymbol1.symbol = "AAPL";
+        iexTradingSymbol1.name = "Apple Inc.";
+
+        IEXTradingSymbol iexTradingSymbol2 = new IEXTradingSymbol();
+        iexTradingSymbol2.symbol = "GOOG";
+        iexTradingSymbol2.name = "Google Inc.";
 
         when(mockIEXCloudClient.fetchReferenceData().dailyIEXTradingSymbols()).thenReturn(
-                new ArrayList<IEXTradingSymbol>() {{
-                    add(iexTradingSymbol);
+                new ArrayList<>() {{
+                    add(iexTradingSymbol1);
+                    add(iexTradingSymbol2);
                 }});
         return mockIEXCloudClient;
     }

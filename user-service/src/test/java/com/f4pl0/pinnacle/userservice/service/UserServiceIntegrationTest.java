@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class UserServiceIntegrationTest {
+class UserServiceIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void registerNewUserSuccessfully() {
+    void registerNewUserSuccessfully() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");
@@ -35,7 +35,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithExistingEmailThrowsException() {
+    void registerUserWithExistingEmailThrowsException() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");
@@ -50,7 +50,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithEmptyPassword() {
+    void registerUserWithEmptyPassword() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("");
@@ -63,7 +63,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithNullPassword() {
+    void registerUserWithNullPassword() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword(null);
@@ -76,7 +76,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithEmptyFirstName() {
+    void registerUserWithEmptyFirstName() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");
@@ -89,7 +89,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithNullFirstName() {
+    void registerUserWithNullFirstName() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");
@@ -102,7 +102,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithEmptyLastName() {
+    void registerUserWithEmptyLastName() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");
@@ -115,7 +115,7 @@ public class UserServiceIntegrationTest {
     }
 
     @Test
-    public void registerUserWithNullLastName() {
+    void registerUserWithNullLastName() {
         UserRegisterDTO userRegisterDTO = new UserRegisterDTO();
         userRegisterDTO.setEmail("test@test.com");
         userRegisterDTO.setPassword("password");

@@ -6,10 +6,10 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AuthorityTest {
+class AuthorityTest {
 
     @Test
-    public void testAllArgsConstructorAndData() {
+    void testAllArgsConstructorAndData() {
         UUID expectedId = UUID.randomUUID();
         String expectedAuthority = "ROLE_USER";
 

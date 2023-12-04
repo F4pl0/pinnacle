@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserRegisterDTOTest {
+class UserRegisterDTOTest {
     @Test
-    public void testAllArgsConstructorAndData() {
+    void testAllArgsConstructorAndData() {
         String expectedFirstName = "John";
         String expectedLastName = "Doe";
         String expectedEmail = "john.doe@example.com";

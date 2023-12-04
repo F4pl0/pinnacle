@@ -28,7 +28,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class PortfolioServiceUnitTest {
+class PortfolioServiceUnitTest {
 
     @Mock
     private StockAssetRepository stockAssetRepository;
@@ -60,7 +60,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAsset() throws IOException {
+    void testAddStockAsset() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -87,7 +87,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAssetWithInvalidSymbol() throws IOException {
+    void testAddStockAssetWithInvalidSymbol() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("INVALID");
@@ -104,7 +104,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAssetWithZeroQuantity() throws IOException {
+    void testAddStockAssetWithZeroQuantity() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -129,7 +129,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAssetWithZeroPrice() throws IOException {
+    void testAddStockAssetWithZeroPrice() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -154,7 +154,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAssetWithFutureTimestamp() throws IOException {
+    void testAddStockAssetWithFutureTimestamp() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -179,7 +179,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testAddStockAssetWithNullUserEmail() throws IOException {
+    void testAddStockAssetWithNullUserEmail() throws IOException {
         String userEmail = null;
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -204,7 +204,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testUpdateStockAsset() {
+    void testUpdateStockAsset() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -232,7 +232,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithAssetNotFound() {
+    void testUpdateStockAssetWithAssetNotFound() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -249,7 +249,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithZeroQuantity() {
+    void testUpdateStockAssetWithZeroQuantity() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -273,7 +273,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithZeroPrice() {
+    void testUpdateStockAssetWithZeroPrice() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -297,7 +297,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithFutureTimestamp() {
+    void testUpdateStockAssetWithFutureTimestamp() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -321,7 +321,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithNullUserEmail() {
+    void testDeleteStockAssetWithNullUserEmail() {
         String userEmail = null;
         UUID assetId = UUID.randomUUID();
 
@@ -331,7 +331,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAsset() {
+    void testDeleteStockAsset() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
 
@@ -351,7 +351,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithAssetNotFound() {
+    void testDeleteStockAssetWithAssetNotFound() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
 
@@ -363,7 +363,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithWrongUserEmail() {
+    void testDeleteStockAssetWithWrongUserEmail() {
         String userEmail = "wrong@example.com";
         UUID assetId = UUID.randomUUID();
 
@@ -382,7 +382,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithInvalidUserEmail() {
+    void testDeleteStockAssetWithInvalidUserEmail() {
         String userEmail = "invalid";
         UUID assetId = UUID.randomUUID();
 
@@ -394,7 +394,7 @@ public class PortfolioServiceUnitTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithNullAssetId() {
+    void testDeleteStockAssetWithNullAssetId() {
         String userEmail = "test@example.com";
         UUID assetId = null;
 

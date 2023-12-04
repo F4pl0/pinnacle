@@ -54,7 +54,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:19092", "port=19092"})
 @ContextConfiguration(classes = {H2DatabaseTestConfig.class, PortfolioControllerTestConfig.class})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class PortfolioControllerTest {
+class PortfolioControllerTest {
 
     private static WireMockServer wireMockServer;
     private static final RSAKey rsaJWK = generateJWK();
@@ -140,7 +140,7 @@ public class PortfolioControllerTest {
     }
 
    @Test
-    public void testAddPortfolioAsset() throws Exception {
+    void testAddPortfolioAsset() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
         addStockAssetDto.setQuantity(10);
@@ -165,7 +165,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testAddPortfolioAssetInvalidSymbol() throws Exception {
+    void testAddPortfolioAssetInvalidSymbol() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("INVALID");
         addStockAssetDto.setQuantity(10);
@@ -181,7 +181,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testAddPortfolioAssetNegativeQuantity() throws Exception {
+    void testAddPortfolioAssetNegativeQuantity() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
         addStockAssetDto.setQuantity(-10);
@@ -197,7 +197,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testAddPortfolioAssetZeroPrice() throws Exception {
+    void testAddPortfolioAssetZeroPrice() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
         addStockAssetDto.setQuantity(10);
@@ -213,7 +213,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testAddPortfolioAssetEmptySymbol() throws Exception {
+    void testAddPortfolioAssetEmptySymbol() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("");
         addStockAssetDto.setQuantity(10);
@@ -229,7 +229,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testAddPortfolioAssetNullPrice() throws Exception {
+    void testAddPortfolioAssetNullPrice() throws Exception {
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
         addStockAssetDto.setQuantity(10);
@@ -245,7 +245,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void getAllStockAssetsTest() throws Exception {
+    void getAllStockAssetsTest() throws Exception {
         AddStockAssetDto asset1 = new AddStockAssetDto();
         asset1.setSymbol("AAPL");
         asset1.setQuantity(10);
@@ -284,14 +284,14 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testGetNonExistingPortfolioAsset() throws Exception {
+    void testGetNonExistingPortfolioAsset() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/portfolio/asset/stock/{assetId}", UUID.randomUUID())
                         .header("Authorization", "Bearer " + userToken))
                 .andExpect(status().isNotFound());
     }
 
    @Test
-    public void testCreateAndUpdatePortfolioAsset() throws Exception {
+    void testCreateAndUpdatePortfolioAsset() throws Exception {
         // Create a new stock asset
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -338,7 +338,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testUpdateNonExistingPortfolioAsset() throws Exception {
+    void testUpdateNonExistingPortfolioAsset() throws Exception {
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
         updateStockAssetDto.setQuantity(15);
         updateStockAssetDto.setPrice(BigDecimal.valueOf(150.0));
@@ -353,7 +353,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testUpdatePortfolioAssetNegativeQuantity() throws Exception {
+    void testUpdatePortfolioAssetNegativeQuantity() throws Exception {
         // Create a new stock asset
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -387,7 +387,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testUpdatePortfolioAssetZeroPrice() throws Exception {
+    void testUpdatePortfolioAssetZeroPrice() throws Exception {
         // Create a new stock asset
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -421,7 +421,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testUpdatePortfolioAssetNullPrice() throws Exception {
+    void testUpdatePortfolioAssetNullPrice() throws Exception {
         // Create a new stock asset
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -455,7 +455,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testDeletePortfolioAsset() throws Exception {
+    void testDeletePortfolioAsset() throws Exception {
         // Create a new stock asset
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -495,7 +495,7 @@ public class PortfolioControllerTest {
     }
 
     @Test
-    public void testDeleteNonExistingPortfolioAsset() throws Exception {
+    void testDeleteNonExistingPortfolioAsset() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/portfolio/asset/stock/{assetId}", UUID.randomUUID())
                         .header("Authorization", "Bearer " + userToken))
                 .andExpect(status().isNotFound());

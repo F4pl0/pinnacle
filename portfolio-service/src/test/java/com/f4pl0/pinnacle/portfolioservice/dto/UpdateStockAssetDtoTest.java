@@ -13,7 +13,7 @@ import java.time.Instant;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UpdateStockAssetDtoTest {
+class UpdateStockAssetDtoTest {
 
     private Validator validator;
 
@@ -24,7 +24,7 @@ public class UpdateStockAssetDtoTest {
     }
 
     @Test
-    public void validDtoTest() {
+    void validDtoTest() {
         UpdateStockAssetDto dto = new UpdateStockAssetDto();
         dto.setQuantity(10);
         dto.setPrice(new BigDecimal("150.00"));
@@ -34,7 +34,7 @@ public class UpdateStockAssetDtoTest {
     }
 
     @Test
-    public void invalidDtoTest() {
+    void invalidDtoTest() {
         UpdateStockAssetDto dto = new UpdateStockAssetDto();
         dto.setQuantity(0);
         dto.setPrice(new BigDecimal("-150.00"));
@@ -44,7 +44,7 @@ public class UpdateStockAssetDtoTest {
     }
 
     @Test
-    public void invalidQuantityTest() {
+    void invalidQuantityTest() {
         UpdateStockAssetDto dto = new UpdateStockAssetDto();
         dto.setQuantity(0);
         dto.setPrice(new BigDecimal("150.00"));
@@ -54,7 +54,7 @@ public class UpdateStockAssetDtoTest {
     }
 
     @Test
-    public void invalidPriceTest() {
+    void invalidPriceTest() {
         UpdateStockAssetDto dto = new UpdateStockAssetDto();
         dto.setQuantity(10);
         dto.setPrice(new BigDecimal("-150.00"));
@@ -64,7 +64,7 @@ public class UpdateStockAssetDtoTest {
     }
 
     @Test
-    public void invalidPurchaseTimestampTest() {
+    void invalidPurchaseTimestampTest() {
         UpdateStockAssetDto dto = new UpdateStockAssetDto();
         dto.setQuantity(10);
         dto.setPrice(new BigDecimal("150.00"));

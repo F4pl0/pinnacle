@@ -16,13 +16,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(classes = H2DatabaseTestConfig.class)
-public class SecurityConfigTest {
+class SecurityConfigTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testAccessToPublicEndpointWithoutAuthentication() throws Exception {
+    void testAccessToPublicEndpointWithoutAuthentication() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/login"))
                 .andExpect(status().isOk());
     }

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StockAssetExceptionTest {
+class StockAssetExceptionTest {
 
     @Test
-    public void stockAssetExceptionMessageTest() {
+    void stockAssetExceptionMessageTest() {
         String expectedMessage = "StockAssetException occurred";
         StockAssetException exception = new StockAssetException(expectedMessage);
 

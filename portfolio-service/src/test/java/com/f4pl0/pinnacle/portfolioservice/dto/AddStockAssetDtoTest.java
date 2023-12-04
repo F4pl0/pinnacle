@@ -13,7 +13,7 @@ import java.time.Instant;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AddStockAssetDtoTest {
+class AddStockAssetDtoTest {
 
     private Validator validator;
 
@@ -24,7 +24,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void validDtoTest() {
+    void validDtoTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL");
         dto.setQuantity(10);
@@ -35,7 +35,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void invalidDtoTest() {
+    void invalidDtoTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL6");
         dto.setQuantity(0);
@@ -46,7 +46,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void invalidSymbolTest() {
+    void invalidSymbolTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL6");
         dto.setQuantity(10);
@@ -57,7 +57,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void invalidQuantityTest() {
+    void invalidQuantityTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL");
         dto.setQuantity(0);
@@ -68,7 +68,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void invalidPriceTest() {
+    void invalidPriceTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL");
         dto.setQuantity(10);
@@ -79,7 +79,7 @@ public class AddStockAssetDtoTest {
     }
 
     @Test
-    public void invalidPurchaseTimestampTest() {
+    void invalidPurchaseTimestampTest() {
         AddStockAssetDto dto = new AddStockAssetDto();
         dto.setSymbol("AAPL");
         dto.setQuantity(10);

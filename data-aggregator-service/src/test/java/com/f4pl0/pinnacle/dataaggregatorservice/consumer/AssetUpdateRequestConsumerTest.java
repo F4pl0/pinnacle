@@ -17,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 @ActiveProfiles("test")
 @EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:19092", "port=19092"})
 @ContextConfiguration(classes = {H2DatabaseTestConfig.class})
-public class AssetUpdateRequestConsumerTest {
+class AssetUpdateRequestConsumerTest {
     @Autowired
     private KafkaTemplate<String, AssetUpdateRequestEvent> kafkaTemplate;
 
@@ -25,7 +25,7 @@ public class AssetUpdateRequestConsumerTest {
     private AssetUpdateRequestConsumer consumer;
 
     @Test
-    public void testPublishAndListen() {
+    void testPublishAndListen() {
         AssetUpdateRequestEvent event = new AssetUpdateRequestEvent("AAPL", AssetUpdateRequestEvent.AssetType.STOCK);
         kafkaTemplate.send("asset-update-request-topic", event);
 

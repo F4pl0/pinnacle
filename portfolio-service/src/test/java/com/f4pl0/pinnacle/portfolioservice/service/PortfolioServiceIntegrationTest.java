@@ -28,7 +28,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @DataJpaTest
-public class PortfolioServiceIntegrationTest {
+class PortfolioServiceIntegrationTest {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -62,7 +62,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testAddStockAsset() throws IOException {
+    void testAddStockAsset() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -81,7 +81,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testAddStockAssetWithInvalidUserEmail() throws IOException {
+    void testAddStockAssetWithInvalidUserEmail() throws IOException {
         String userEmail = "invalid";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -95,7 +95,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testAddStockAssetWithNullSymbol() throws IOException {
+    void testAddStockAssetWithNullSymbol() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol(null);
@@ -109,7 +109,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testAddStockAssetWithNegativeQuantity() throws IOException {
+    void testAddStockAssetWithNegativeQuantity() throws IOException {
         String userEmail = "test@example.com";
         AddStockAssetDto addStockAssetDto = new AddStockAssetDto();
         addStockAssetDto.setSymbol("AAPL");
@@ -123,7 +123,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testUpdateStockAsset() {
+    void testUpdateStockAsset() {
         String userEmail = "test@example.com";
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
         updateStockAssetDto.setQuantity(20);
@@ -149,7 +149,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithInvalidUserEmail() {
+    void testUpdateStockAssetWithInvalidUserEmail() {
         String userEmail = "invalid";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -173,7 +173,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testUpdateStockAssetWithNegativePrice() {
+    void testUpdateStockAssetWithNegativePrice() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
         UpdateStockAssetDto updateStockAssetDto = new UpdateStockAssetDto();
@@ -197,7 +197,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testDeleteStockAsset() {
+    void testDeleteStockAsset() {
         String userEmail = "test@example.com";
 
         StockAsset stockAsset = new StockAsset();
@@ -216,7 +216,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithInvalidUserEmail() {
+    void testDeleteStockAssetWithInvalidUserEmail() {
         String userEmail = "invalid";
         UUID assetId = UUID.randomUUID();
 
@@ -235,7 +235,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithInvalidAssetId() {
+    void testDeleteStockAssetWithInvalidAssetId() {
         String userEmail = "test@example.com";
         UUID assetId = UUID.randomUUID();
 
@@ -245,7 +245,7 @@ public class PortfolioServiceIntegrationTest {
     }
 
     @Test
-    public void testDeleteStockAssetWithNullAssetId() {
+    void testDeleteStockAssetWithNullAssetId() {
         String userEmail = "test@example.com";
         UUID assetId = null;
 

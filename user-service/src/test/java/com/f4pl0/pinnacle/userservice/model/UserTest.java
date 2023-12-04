@@ -8,9 +8,9 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserTest {
+class UserTest {
     @Test
-    public void testAllArgsConstructorAndData() {
+    void testAllArgsConstructorAndData() {
         UUID expectedId = UUID.randomUUID();
         String expectedUsername = "JohnDoe";
         String expectedEmail = "john.doe@example.com";

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-public class PinnacleUserDetailsServiceUnitTest {
+class PinnacleUserDetailsServiceUnitTest {
     @Mock
     private UserRepository userRepository;
 
@@ -29,7 +29,7 @@ public class PinnacleUserDetailsServiceUnitTest {
     }
 
     @Test
-    public void loadUserByUsername_whenUserExists_returnsUserDetails() {
+    void loadUserByUsername_whenUserExists_returnsUserDetails() {
         User mockUser = new User();
         mockUser.setUsername("testUser");
         when(userRepository.findByUsername(anyString())).thenReturn(mockUser);
@@ -40,24 +40,24 @@ public class PinnacleUserDetailsServiceUnitTest {
     }
 
     @Test
-    public void loadUserByUsername_whenUserDoesNotExist_throwsUsernameNotFoundException() {
+    void loadUserByUsername_whenUserDoesNotExist_throwsUsernameNotFoundException() {
         when(userRepository.findByUsername(anyString())).thenReturn(null);
 
         assertThrows(UsernameNotFoundException.class, () -> serviceUnderTest.loadUserByUsername("nonExistentUser"));
     }
 
     @Test
-    public void loadUserByUsername_whenUsernameIsNull_throwsIllegalArgumentException() {
+    void loadUserByUsername_whenUsernameIsNull_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> serviceUnderTest.loadUserByUsername(null));
     }
 
     @Test
-    public void loadUserByUsername_whenUsernameIsEmpty_throwsIllegalArgumentException() {
+    void loadUserByUsername_whenUsernameIsEmpty_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> serviceUnderTest.loadUserByUsername(""));
     }
 
     @Test
-    public void loadUserByUsername_whenUserExists_returnsCorrectUserDetails() {
+    void loadUserByUsername_whenUserExists_returnsCorrectUserDetails() {
         User mockUser = new User();
         mockUser.setUsername("testUser");
         mockUser.setPassword("testPassword");

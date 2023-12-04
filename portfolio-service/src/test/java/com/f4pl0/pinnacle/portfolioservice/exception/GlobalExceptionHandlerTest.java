@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GlobalExceptionHandlerTest {
+class GlobalExceptionHandlerTest {
 
     private final GlobalExceptionHandler handler = new GlobalExceptionHandler();
 
     @Test
-    public void handleStockAssetExceptionTest() {
+    void handleStockAssetExceptionTest() {
         StockAssetException exception = mock(StockAssetException.class);
         when(exception.getMessage()).thenReturn("StockAssetException occurred");
 
@@ -23,7 +23,7 @@ public class GlobalExceptionHandlerTest {
     }
 
     @Test
-    public void handleIOExceptionTest() {
+    void handleIOExceptionTest() {
         Exception exception = mock(Exception.class);
         when(exception.getMessage()).thenReturn("Exception occurred");
 

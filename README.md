@@ -2,6 +2,8 @@
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/f4pl0/pinnacle/mavenTest.yml?style=flat-square)
 [![codecov](https://codecov.io/gh/F4pl0/pinnacle/graph/badge.svg?token=DXR3RFF0YY)](https://codecov.io/gh/F4pl0/pinnacle)
+[![CodeFactor](https://www.codefactor.io/repository/github/f4pl0/pinnacle/badge)](https://www.codefactor.io/repository/github/f4pl0/pinnacle)
+[![DeepSource](https://app.deepsource.com/gh/F4pl0/pinnacle.svg/?label=active+issues&show_trend=false&token=Y2jP7YzYepBkldJc3dBU2mul)](https://app.deepsource.com/gh/F4pl0/pinnacle/)
 ![GitHub license](https://img.shields.io/github/license/f4pl0/pinnacle?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/f4pl0/pinnacle?style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/f4pl0/pinnacle?style=flat-square)
